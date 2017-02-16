@@ -374,17 +374,43 @@
 
       
         
-          <h4 id="5-1-Object类型"><a href="#5-1-Object类型" class="headerlink" title="5.1 Object类型"></a>5.1 Object类型</h4><p>创建<code>Object</code>实例的两种方式：</p>
-<h5 id="1-new操作符后跟Object构造函数"><a href="#1-new操作符后跟Object构造函数" class="headerlink" title="1.new操作符后跟Object构造函数"></a>1.<code>new</code>操作符后跟<code>Object</code>构造函数</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">person.name = <span class="string">'1carus'</span></div><div class="line">person.age = <span class="number">24</span>;</div></pre></td></tr></table></figure>
-<h5 id="2-对象字面量表示法"><a href="#2-对象字面量表示法" class="headerlink" title="2.对象字面量表示法"></a>2.对象字面量表示法</h5><p><strong>字面量表示法是较常使用的方式，也是向函数传递大量可选参数的首选方式</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;</div><div class="line">	<span class="attr">name</span>: <span class="string">'1carus'</span>,</div><div class="line">	<span class="attr">age</span>: <span class="number">24</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>注：通过字面量定义对象时，实际上不会调用<code>Object</code>的构造函数</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/02/13/JavaScript高级程序设计读书笔记（一）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h4 id="闲话"><a href="#闲话" class="headerlink" title="闲话"></a>闲话</h4><p>《JavaScript高级程序设计》俗称红宝书，号称前端狗人手一本，基础捉鸡的我，准备好好读一读本书了，当然笔记也是必不可少的~</p>
+<h4 id="数据类型、作用域"><a href="#数据类型、作用域" class="headerlink" title="数据类型、作用域"></a>数据类型、作用域</h4><p>关键知识点：<code>数据类型</code> 、<code>作用域</code> 、<code>执行上下文</code></p>
+<h4 id="基本数据类型与引用数据类型"><a href="#基本数据类型与引用数据类型" class="headerlink" title="基本数据类型与引用数据类型"></a>基本数据类型与引用数据类型</h4><h5 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h5><p>6种：Number、String、Undefined、Null、Boolean、Symbol (ES 6 新增)</p>
+<p>使用typeof操作符检测数据类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span> <span class="keyword">var</span></div><div class="line"><span class="comment">// 返回值有"undefined"、"boolean"、"string"、"number"、"object"、"function"</span></div></pre></td></tr></table></figure>
+<p>是的没错！返回值中没有”null“</p>
+<p>当使用<code>typeof</code>检测一个<code>null</code>类型时会返回<code>object</code>    ，这是因为<code>null</code>其实表示的就是一个空对象指针，所以理所当然会返回<code>object</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//可以这样来检测一个值是否为null</span></div><div class="line"><span class="keyword">var</span> a = <span class="literal">null</span>;</div><div class="line"><span class="keyword">if</span>(!a &amp;&amp; <span class="keyword">typeof</span> a === <span class="string">"object"</span>)&#123;</div><div class="line">  todo...</div><div class="line">&#125;</div><div class="line">a === <span class="literal">null</span> <span class="comment">// 其实...就可以了</span></div></pre></td></tr></table></figure>
+<h5 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h5><p>当然是<code>Object 类型</code>，还有它的几个实例，<code>Array 类型</code>、<code>Date 类型</code>、<code>RegExp 类型</code> 、<code>Function 类型</code>等。</p>
+<h5 id="引用数据类型的值是按引用访问的"><a href="#引用数据类型的值是按引用访问的" class="headerlink" title="引用数据类型的值是按引用访问的"></a>引用数据类型的值是按引用访问的</h5><p>当一个对象赋值给一个变量时，该变量所拥有的存储在堆中一个对象的指针。</p>
+<h4 id="作用域-（重点哟）"><a href="#作用域-（重点哟）" class="headerlink" title="作用域 （重点哟）"></a>作用域 （重点哟）</h4><p>虽然在《高程》上关于作用域的篇幅仅仅两三页，但是对于<code>作用域</code>理解直接关系到理解<code>闭包</code>之类的概念，初次读还是有一定的理解难度，我看到3第三遍才渐渐有点眉目（→ →）</p>
+<h5 id="执行上下文（execution-context）"><a href="#执行上下文（execution-context）" class="headerlink" title="执行上下文（execution context）"></a>执行上下文（execution context）</h5><p><code>执行上下文</code>也叫<code>执行环境</code>，<code>执行上下文</code>定义了变量或者函数有权访问其他数据，每个<code>执行上下文</code>都有一个与之关联的<code>变量对象</code>（variable object 简称VO），环境中定义的所有变量和函数都保存在<code>变量对象</code>中。</p>
+<p>所有函数的执行都是在<code>执行上下文栈</code>中完成的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> color = <span class="string">'blue'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeColor</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> anotherColor = <span class="string">'red'</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">swapColors</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> tempColor = anotherColor;</div><div class="line">        anotherColor = color;</div><div class="line">        color = tempColor;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    swapColors();</div><div class="line">&#125;</div><div class="line"></div><div class="line">changeColor();</div></pre></td></tr></table></figure>
+<p><img src="/Users/icarus/Downloads/Class Diagram.png" alt="Class Diagram"></p>
+<p>如图，首先全局执行上下文入栈，当执行流到<code>changeColor()</code>时，<code>changeColor()</code>被推入到<code>执行上下文栈</code>中，执行其中代码，到<code>swapColors()</code>这里，把<code>swapColors()</code>推入栈，继续执行<code>swapColors()</code>,没有新的执行上下文，执行完毕，<code>执行上下文栈</code>推出<code>swapColors()</code>，继续<code>changeColor()</code>，执行完毕<code>执行上下文栈</code>推出<code>changeColor()</code>。最后在窗口关闭时，推出全局执行上下文。</p>
+<p><strong>那么每个函数的执行上下文内部又是怎么执行的呢</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function demo() &#123;</div><div class="line">    console.log(a);</div><div class="line">    console.log(foo());</div><div class="line">    var a = 1;</div><div class="line">    function foo ()&#123;</div><div class="line">    console.log(&quot;this is foo()&quot;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">demo() // undefined,&quot;this is foo()&quot;</div></pre></td></tr></table></figure>
+<p>上面是个很常见的面试题，考察的就是关于<code>变量提升</code>的知识点，但是究其原理可能就不清楚了。</p>
+<p>当<code>demo()</code>进入<code>执行上下文栈</code>中，会创建一个<code>demo()</code>的执行上下文。</p>
+<p><img src="/Users/icarus/Downloads/EC.png" alt="EC"></p>
+<p><code>执行上下文</code>的生命周期分为:</p>
+<ul>
+<li>创建阶段：创建变量对象、建立作用域、确定this指向</li>
+<li>执行阶段：函数引用、变量赋值、执行其余代码</li>
+</ul>
+<p>上面的demo()的执行上下文创建阶段：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">demoEC = &#123;</div><div class="line">  <span class="comment">//变量对象</span></div><div class="line">  VO:&#123;&#125;,</div><div class="line">  <span class="comment">//作用域链</span></div><div class="line">  scopeChain:&#123;&#125;,</div><div class="line">  <span class="attr">this</span>:&#123;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">VO = &#123;</div><div class="line">  <span class="attr">arguments</span>:&#123;&#125;,</div><div class="line">  <span class="attr">foo</span>: &lt;foo reference&gt;,</div><div class="line">  a:undefined</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行阶段：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//活动对象就是作用域链上正在被执行引用和赋值的变量对象</span></div><div class="line">AO = &#123;</div><div class="line">  <span class="attr">arguments</span>:&#123;&#125;,</div><div class="line">  <span class="attr">foo</span>: &lt;foo reference&gt;,</div><div class="line">  a:1</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h5><p>当前作用域链保存了包含当前执行上下文的变量对象到全局上下文的变量对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">VO(current context) =&gt; VO(外部包含上下文) =&gt; ········  =&gt;VO(全局上下文)</div></pre></td></tr></table></figure>
+<p>访问变量和函数只能从当前上下文开始，从左往右，向上搜索。</p>
+<p><strong>就酱~</strong></p>
+
+          
         
       
     </div>
