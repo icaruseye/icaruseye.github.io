@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="JavaScript 读书笔记," />
 
 
 
@@ -103,7 +103,7 @@
 12typeof">
 <meta property="og:image" content="http://yoursite.com/Users/icarus/Downloads/Class Diagram.png">
 <meta property="og:image" content="http://yoursite.com/Users/icarus/Downloads/EC.png">
-<meta property="og:updated_time" content="2017-02-16T15:23:11.000Z">
+<meta property="og:updated_time" content="2017-02-16T15:33:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《JavaScript高级程序设计》读书笔记（一）">
 <meta name="twitter:description" content="闲话《JavaScript高级程序设计》俗称红宝书，号称前端狗人手一本，基础捉鸡的我，准备好好读一读本书了，当然笔记也是必不可少的~
@@ -338,6 +338,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript-读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript 读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -390,6 +412,7 @@
 <p>使用typeof操作符检测数据类型</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span> <span class="keyword">var</span></div><div class="line"><span class="comment">// 返回值有"undefined"、"boolean"、"string"、"number"、"object"、"function"</span></div></pre></td></tr></table></figure>
 <p>是的没错！返回值中没有”null“</p>
+<a id="more"></a>
 <p>当使用<code>typeof</code>检测一个<code>null</code>类型时会返回<code>object</code>    ，这是因为<code>null</code>其实表示的就是一个空对象指针，所以理所当然会返回<code>object</code></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//可以这样来检测一个值是否为null</span></div><div class="line"><span class="keyword">var</span> a = <span class="literal">null</span>;</div><div class="line"><span class="keyword">if</span>(!a &amp;&amp; <span class="keyword">typeof</span> a === <span class="string">"object"</span>)&#123;</div><div class="line">  todo...</div><div class="line">&#125;</div><div class="line">a === <span class="literal">null</span> <span class="comment">// 其实...就可以了</span></div></pre></td></tr></table></figure>
 <h5 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h5><p>当然是<code>Object 类型</code>，还有它的几个实例，<code>Array 类型</code>、<code>Date 类型</code>、<code>RegExp 类型</code> 、<code>Function 类型</code>等。</p>
@@ -441,7 +464,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/JavaScript-读书笔记/" rel="tag"># JavaScript 读书笔记</a>
           
         </div>
       
@@ -450,6 +473,22 @@
         
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/16/JavaScript高级程序设计读书笔记（二）/" rel="prev" title="JavaScript高级程序设计读书笔记（二）">
+                JavaScript高级程序设计读书笔记（二） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -520,12 +559,19 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
           
 
           
