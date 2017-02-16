@@ -101,9 +101,9 @@
 基本数据类型与引用数据类型基本数据类型6种：Number、String、Undefined、Null、Boolean、Symbol (ES 6 新增)
 使用typeof操作符检测数据类型
 12typeof">
-<meta property="og:image" content="http://yoursite.com/Users/icarus/Downloads/Class Diagram.png">
+<meta property="og:image" content="http://yoursite.com/1.png">
 <meta property="og:image" content="http://yoursite.com/Users/icarus/Downloads/EC.png">
-<meta property="og:updated_time" content="2017-02-16T15:33:05.000Z">
+<meta property="og:updated_time" content="2017-02-16T15:44:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《JavaScript高级程序设计》读书笔记（一）">
 <meta name="twitter:description" content="闲话《JavaScript高级程序设计》俗称红宝书，号称前端狗人手一本，基础捉鸡的我，准备好好读一读本书了，当然笔记也是必不可少的~
@@ -111,7 +111,7 @@
 基本数据类型与引用数据类型基本数据类型6种：Number、String、Undefined、Null、Boolean、Symbol (ES 6 新增)
 使用typeof操作符检测数据类型
 12typeof">
-<meta name="twitter:image" content="http://yoursite.com/Users/icarus/Downloads/Class Diagram.png">
+<meta name="twitter:image" content="http://yoursite.com/1.png">
 
 
 
@@ -421,7 +421,7 @@
 <h5 id="执行上下文（execution-context）"><a href="#执行上下文（execution-context）" class="headerlink" title="执行上下文（execution context）"></a>执行上下文（execution context）</h5><p><code>执行上下文</code>也叫<code>执行环境</code>，<code>执行上下文</code>定义了变量或者函数有权访问其他数据，每个<code>执行上下文</code>都有一个与之关联的<code>变量对象</code>（variable object 简称VO），环境中定义的所有变量和函数都保存在<code>变量对象</code>中。</p>
 <p>所有函数的执行都是在<code>执行上下文栈</code>中完成的。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> color = <span class="string">'blue'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeColor</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> anotherColor = <span class="string">'red'</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">swapColors</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> tempColor = anotherColor;</div><div class="line">        anotherColor = color;</div><div class="line">        color = tempColor;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    swapColors();</div><div class="line">&#125;</div><div class="line"></div><div class="line">changeColor();</div></pre></td></tr></table></figure>
-<p><img src="/Users/icarus/Downloads/Class Diagram.png" alt="Class Diagram"></p>
+<p><img src="/1.png" alt="Class Diagram"></p>
 <p>如图，首先全局执行上下文入栈，当执行流到<code>changeColor()</code>时，<code>changeColor()</code>被推入到<code>执行上下文栈</code>中，执行其中代码，到<code>swapColors()</code>这里，把<code>swapColors()</code>推入栈，继续执行<code>swapColors()</code>,没有新的执行上下文，执行完毕，<code>执行上下文栈</code>推出<code>swapColors()</code>，继续<code>changeColor()</code>，执行完毕<code>执行上下文栈</code>推出<code>changeColor()</code>。最后在窗口关闭时，推出全局执行上下文。</p>
 <p><strong>那么每个函数的执行上下文内部又是怎么执行的呢</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function demo() &#123;</div><div class="line">    console.log(a);</div><div class="line">    console.log(foo());</div><div class="line">    var a = 1;</div><div class="line">    function foo ()&#123;</div><div class="line">    console.log(&quot;this is foo()&quot;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">demo() // undefined,&quot;this is foo()&quot;</div></pre></td></tr></table></figure>
