@@ -103,7 +103,7 @@
 12typeof">
 <meta property="og:image" content="http://yoursite.com/images/213-1.png">
 <meta property="og:image" content="http://yoursite.com/images/213-2.png">
-<meta property="og:updated_time" content="2017-02-18T16:00:36.000Z">
+<meta property="og:updated_time" content="2017-02-18T16:09:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《JavaScript高级程序设计》读书笔记（一）">
 <meta name="twitter:description" content="闲话《JavaScript高级程序设计》俗称红宝书，号称前端狗人手一本，基础捉鸡的我，准备好好读一读本书了，当然笔记也是必不可少的~
@@ -425,7 +425,7 @@
 <p>是的没错！返回值中没有”null“</p>
 <a id="more"></a>
 <p>当使用<code>typeof</code>检测一个<code>null</code>类型时会返回<code>object</code>    ，这是因为<code>null</code>其实表示的就是一个空对象指针，所以理所当然会返回<code>object</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//这样来检测一个值是否为null</span></div><div class="line">a === <span class="literal">null</span></div><div class="line"></div><div class="line"><span class="comment">//判断是否是对象</span></div><div class="line"><span class="keyword">var</span> isObject = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> type = <span class="keyword">typeof</span> obj;</div><div class="line">    <span class="keyword">return</span> type === <span class="string">'function'</span> || type === <span class="string">'object'</span> &amp;&amp; !!obj;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//这样来检测一个值是否为null</span></div><div class="line">a === <span class="literal">null</span></div><div class="line"></div><div class="line"><span class="comment">//以下是underscore使用的判断方法</span></div><div class="line"><span class="comment">//判断是否是对象</span></div><div class="line"><span class="keyword">var</span> isObject = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> type = <span class="keyword">typeof</span> obj;</div><div class="line">    <span class="keyword">return</span> type === <span class="string">'function'</span> || type === <span class="string">'object'</span> &amp;&amp; !!obj;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">each([<span class="string">'Arguments'</span>, <span class="string">'Function'</span>, <span class="string">'String'</span>, <span class="string">'Number'</span>, <span class="string">'Date'</span>, <span class="string">'RegExp'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">   _[<span class="string">'is'</span> + name] = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> toString.call(obj) === <span class="string">'[object '</span> + name + <span class="string">']'</span>;</div><div class="line">   &#125;;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//判断是否是数组</span></div><div class="line"><span class="keyword">var</span> isArray = nativeIsArray || <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> toString.call(obj) === <span class="string">'[object Array]'</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="keyword">var</span> <span class="built_in">isNaN</span> = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line"><span class="keyword">return</span> _.isNumber(obj) &amp;&amp; obj !== +obj;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">//判断是否是Boolean值</span></div><div class="line"><span class="keyword">var</span> isBoolean = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line"><span class="keyword">return</span> obj === <span class="literal">true</span> || obj === <span class="literal">false</span> || toString.call(obj) === <span class="string">'[object Boolean]'</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">//判断是否是undefined</span></div><div class="line"><span class="keyword">var</span> isUndefined = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</div><div class="line"><span class="keyword">return</span> obj === <span class="keyword">void</span> <span class="number">0</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h5 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h5><p>当然是<code>Object 类型</code>，还有它的几个实例，<code>Array 类型</code>、<code>Date 类型</code>、<code>RegExp 类型</code> 、<code>Function 类型</code>等。</p>
 <h5 id="引用数据类型的值是按引用访问的"><a href="#引用数据类型的值是按引用访问的" class="headerlink" title="引用数据类型的值是按引用访问的"></a>引用数据类型的值是按引用访问的</h5><p>当一个对象赋值给一个变量时，该变量所拥有的存储在堆中一个对象的指针。</p>
 <h4 id="作用域-（重点哟）"><a href="#作用域-（重点哟）" class="headerlink" title="作用域 （重点哟）"></a>作用域 （重点哟）</h4><p>虽然在《高程》上关于作用域的篇幅仅仅两三页，但是对于<code>作用域</code>理解直接关系到理解<code>闭包</code>之类的概念，初次读还是有一定的理解难度，我看到3第三遍才渐渐有点眉目（→ →）</p>
@@ -572,7 +572,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -581,7 +581,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -590,7 +590,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
