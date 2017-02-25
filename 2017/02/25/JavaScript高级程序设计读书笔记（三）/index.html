@@ -87,19 +87,16 @@
 
 
 
-<meta name="description" content="创建对象虽然使用Object构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用以下一些创建对象的模式。
-工厂模式12345678910111213function createPerson(name, age, job) &amp;#123;  var  o = new Object();  o.name =">
+<meta name="description" content="创建对象虽然使用Object构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用以下一些创建对象的模式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript高级程序设计读书笔记（三）">
 <meta property="og:url" content="http://yoursite.com/2017/02/25/JavaScript高级程序设计读书笔记（三）/index.html">
 <meta property="og:site_name" content="1carus's blog">
-<meta property="og:description" content="创建对象虽然使用Object构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用以下一些创建对象的模式。
-工厂模式12345678910111213function createPerson(name, age, job) &amp;#123;  var  o = new Object();  o.name =">
-<meta property="og:updated_time" content="2017-02-25T14:55:20.000Z">
+<meta property="og:description" content="创建对象虽然使用Object构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用以下一些创建对象的模式。">
+<meta property="og:updated_time" content="2017-02-25T14:56:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript高级程序设计读书笔记（三）">
-<meta name="twitter:description" content="创建对象虽然使用Object构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用以下一些创建对象的模式。
-工厂模式12345678910111213function createPerson(name, age, job) &amp;#123;  var  o = new Object();  o.name =">
+<meta name="twitter:description" content="创建对象虽然使用Object构造函数或对象字面量都可以用来创建单个对象，但这些方式有个明显的缺点：使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用以下一些创建对象的模式。">
 
 
 
@@ -406,6 +403,7 @@
 
       
         <h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><p>虽然使用<code>Object构造函数</code>或<code>对象字面量</code>都可以用来创建单个对象，但这些方式有个明显的缺点：使用同一个接口创建很多对象，会产生大量的重复代码。为解决这个问题，人们开始使用以下一些创建对象的模式。</p>
+<a id="more"></a>
 <h5 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name, age, job</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span>  o = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">  o.name = name;</div><div class="line">  o.age = age;</div><div class="line">  o.job = job;</div><div class="line">  o.sayHi = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="keyword">this</span>.age);</div><div class="line">  &#125;;</div><div class="line">  <span class="keyword">return</span> o</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> person1 = createPerson(<span class="string">"Nicholas"</span>, <span class="number">29</span>, <span class="string">"Software Enginner"</span>);</div><div class="line"><span class="keyword">var</span> person2 = createPerson(<span class="string">"Greg"</span>, <span class="number">27</span>, <span class="string">"Doctor"</span>)</div></pre></td></tr></table></figure>
 <p>工厂模式解决了创建多个相似对象的问题，但却没有解决对象识别的问题（即怎样知道一个对象的类型）。</p>
 <h5 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age, job</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.age = age;</div><div class="line">  <span class="keyword">this</span>.job = job;</div><div class="line">  <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	alert(<span class="keyword">this</span>.name)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">"Nicholas"</span>, <span class="number">29</span>, <span class="string">"Software Enginner"</span>);</div><div class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">"Greg"</span>, <span class="number">27</span>, <span class="string">"Doctor"</span>);</div></pre></td></tr></table></figure>
